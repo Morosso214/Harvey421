@@ -19,7 +19,9 @@ import java.io.BufferedWriter;
 public class MortgageCalc
 {
    JFrame mFrame;
-   JPanel mPanel;
+   JPanel mPanelAmt;
+   JPanel mPanelApr;
+   JPanel mPanelTerm;
    JTextField mFieldAmt;
    JTextField mFieldApr;
    JTextField mFieldTerm;
@@ -39,25 +41,32 @@ public class MortgageCalc
    {
       mFrame = new JFrame("Mortgage Calculator");
       mFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-     
-      mPanel = new JPanel();
-     
+            
+      mPanelAmt = new JPanel();
+      mPanelAmt.add(new Label("Total amount:"));
       mFieldAmt = new JTextField(12);
-      mFieldAmt.setText("Mortgage Amount");
+
+      mPanelApr = new JPanel();
+      mPanelApr.add(new Label("APR:"));
       mFieldApr = new JTextField(12);
-      mFieldApr.setText("APR");
+
+      mPanelTerm = new JPanel();
+      mPanelTerm.add(new Label("Term (in years):"));
       mFieldTerm = new JTextField(12);
-      mFieldTerm.setText("Term (in years)");
       
-      mPanel.add(mFieldAmt);
-      mPanel.add(mFieldApr);
-      mPanel.add(mFieldTerm);     
-      mFrame.getContentPane().add(BorderLayout.CENTER, mPanel);
+      mPanelAmt.add(mFieldAmt);
+      mPanelApr.add(mFieldApr);
+      mPanelTerm.add(mFieldTerm);     
+
+      mFrame.getContentPane().add(BorderLayout.WEST, mPanelAmt);
+      mFrame.getContentPane().add(BorderLayout.CENTER, mPanelApr);
+      mFrame.getContentPane().add(BorderLayout.EAST, mPanelTerm);
+      
       
       //JButton open = new JButton("Calculate Mortgage");
       //open.addActionListener(new CalcListener());
       mFrame.setVisible(true);
-      mFrame.setSize(500, 200);
+      mFrame.setSize(750, 150);
    }
 
    class CalcListner implements ActionListener
